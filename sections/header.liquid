@@ -1,28 +1,91 @@
-<header class="header header1">
-  <ul class="header1__collections-nav">
-    <li class="header1__collection-link"><a href="/link">Link Top<i class="fas fa-chevron-down"></i></a>
-      <ul class="collection-link__sub-links">
-        <li><a href="/link/1">Link 1</a></li>
-        <li><a href="/link/2">Link 2</a></li>
-        <li><a href="/link/3">Link 3</a></li>
-      </ul>
-    </li>
-    <li class="header1__collection-link"><a href="/link">Link</a></li>
-    <li class="header1__collection-link"><a href="/link">Link</a></li>
-  </ul>
-  <div class="header1__logo"><a href="/link">Company</a></div>
-  <ul class="header1__collections-nav">
-    <li class="header1__collection-link"><a href="/link">Link</a></li>
-    <li class="header1__collection-link"><a href="/link">Link</a></li>
-    <li class="header1__collection-link"><a href="/cart"><i class="fas fa-shopping-cart"></i></a></li>
-    <li class="header1__collection-link"><a href="/cart"><i class="fas fa-user"></i></a></li>
-  </ul>
-</header> 
 {% case section.settings.header_type %}
-    {% when 'header1' %} 
-
-    {% when 'header2' %}
-    {% when 'header3' %}
+    {% when "header1" %} 
+      <header class="header header1">
+        <ul class="header1__collections-nav">
+          <li class="header1__collection-link"><a href="/link">Link Top<i class="fas fa-chevron-down"></i></a>
+            <ul class="collection-link__sub-links">
+              <li><a href="/link/1">Link 1</a></li>
+              <li><a href="/link/2">Link 2</a></li>
+              <li><a href="/link/3">Link 3</a></li>
+            </ul>
+          </li>
+          <li class="header1__collection-link"><a href="/link">Link</a></li>
+          <li class="header1__collection-link"><a href="/link">Link</a></li>
+        </ul>
+        <div class="header1__logo"><a href="{{ routes.root_url }}">
+          {%- if section.settings.logo != blank -%}
+            {%- assign image_size = section.settings.logo_width | append: 'x' -%}
+            <img srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+              src="{{ section.settings.logo | img_url: image_size }}"
+              loading="lazy"
+              class="header__heading-logo"
+              width="{{ section.settings.logo.width }}"
+              height="{{ section.settings.logo.height }}"
+              alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
+            >
+          {%- else -%}
+            <span>{{ shop.name }}</span>
+          {%- endif -%}
+        </a></div>
+        <ul class="header1__collections-nav">
+          <li class="header1__collection-link"><a href="/link">Link</a></li>
+          <li class="header1__collection-link"><a href="/link">Link</a></li>
+          <li class="header1__collection-link"><a href="/cart"><i class="fas fa-shopping-cart"></i></a></li>
+          <li class="header1__collection-link"><a href="/cart"><i class="fas fa-user"></i></a></li>
+        </ul>
+      </header> 
+    {% when "header2" %} 
+      <header className="header header2">      
+      <div className="header2__logo">
+          <a href="/link">Company</a>
+      </div>
+      <ul className="header2__collections-nav">
+          <li className="header2__collection-link">
+              <a href="/link" >Link Top 
+                  <i className="fas fa-chevron-down"></i>
+               </a>
+              <ul className="collection-link__sub-links">
+                  <li><a href="/link/1">Link 1</a></li>
+                  <li><a href="/link/2">Link 2</a></li>
+                  <li><a href="/link/3">Link 3</a></li>
+              </ul>
+          </li>
+          <li className="header2__collection-link">
+              <a href="/link">Link</a>
+          </li>
+          <li className="header2__collection-link">
+              <a href="/link">Link</a>
+          </li>
+      </ul>
+      <div className="header2__collections-nav">
+          <a href="/cart"><i className="fas fa-shopping-cart"></i></a>
+          <a href="/cart"><i className="fas fa-user"></i></a>
+      </div>
+      </header>
+    {% when "header3" %} 
+      <header className="header header3">      
+        <div className="header3__logo">
+            <a href="/link">Company</a>
+        </div>
+        <ul className="header3__collections-nav">
+            <li className="header3__collection-link">
+                <a href="/link" >Link Top 
+                    <i className="fas fa-chevron-down"></i>
+                </a>
+                <ul className="collection-link__sub-links">
+                    <li><a href="/link/1">Link 1</a></li>
+                    <li><a href="/link/2">Link 2</a></li>
+                    <li><a href="/link/3">Link 3</a></li>
+                </ul>
+            </li>
+            <li className="header3__collection-link">
+                <a href="/link">Link</a>
+            </li>
+            <li className="header3__collection-link">
+                <a href="/link">Link</a>
+            </li>
+        </ul>
+      </header>
 {% endcase %}
 
 {% schema %}
