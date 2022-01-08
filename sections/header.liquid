@@ -3,7 +3,7 @@
   {%- when 'header1' -%}
   <header class="header header1">
     <ul class="header1__collections-nav">
-      {%- if section.settings.menu != blank -%} 
+      {%- if section.settings.menu == blank -%} 
         {%- for link in section.settings.menu.links -%}
           {%- if link.links == blank -%}
             <li class="header1__collection-link">
